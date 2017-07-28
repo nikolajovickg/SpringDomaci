@@ -1,4 +1,4 @@
-Kad se startuje server, moze rucno da se udje u index.html da se vide/dodaju/izbrisu studenti. Trenutno ne moze preko rute, jer nisam namestio da mi spring servira static.
+Kad se startuje server, moze rucno da se udje u index.html da se vide/dodaju/izbrisu studenti. Trenutno ne moze preko rute, jer nisam namestio da mi spring servira static. Index.html treba da bude bolji, trenutno je pisan onako iz glave cisto da se iskoristi napisan API.
 
 2) Dependency management omogucava da se u glavom POMu definisu verzije koriscenih depencencia u projektu, pa se u ostalim POMovima definise samo dependency bez verzije, gde maven onda automatski preko parent-child odnosa se penje kroz POMove dok ne nadje dependecy management, i odatle vuce verziju. To je korisno zato sto se prilikom promene verzije dependencija ne menja u svakom POMu verzija, vec samo u glavnom.
 

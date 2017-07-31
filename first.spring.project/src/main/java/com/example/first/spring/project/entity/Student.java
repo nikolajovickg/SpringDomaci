@@ -1,8 +1,15 @@
 package com.example.first.spring.project.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Student {
-	private int id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
 	private String className;
 	private String name;
 
@@ -35,7 +42,7 @@ public class Student {
 		this.id = id;
 	}
 
-	public int getId() {
-		return id;
+	public Integer getId() {
+		return this.id;
 	}
 }

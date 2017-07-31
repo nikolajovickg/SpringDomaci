@@ -1,0 +1,62 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+  <script>
+    var aplikacija = angular.module("aplikacija", []);
+    aplikacija.controller("kontroler", function($scope, $http){
+      getPodaci = function(){
+        $http.get('http://localhost:8080/students').then(function(res){
+          $scope.prom = res.data;
+        })
+      }
+      $scope.init = function(){getPodaci()};
+      $scope.obrisi = function(id){
+        $http.delete('http://localhost:8080/students/'+id);
+        getPodaci();
+      }
+      $scope.dodaj = function(name, className){
+        var dodatStudent = {"name" : $scope.ime, "className" : $scope.predmet};
+        $http.post('http://localhost:8080/students', JSON.stringify(dodatStudent));
+        console.log(dodatStudent);
+        getPodaci();
+      }
+    });
+</script>
+</head>
+<body>
+  <div class = "container" ng-app="aplikacija">
+    <div class = "col-md-12">
+      <div ng-controller="kontroler" ng-init="init()">
+        <div class = "table-responsive">
+          <table class = "table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>ime</th>
+                <th>predmet</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat = "student in prom">
+                <td> {{student.id}} </td>
+                <td> {{student.name}} </td>
+                <td> {{student.className}} </td>
+                <td> <button type="button" class="btn btn-danger" ng-click = "obrisi(student.id)">Obrisi</button> </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td> <input ng-model = "ime"> </td>
+                <td> <input ng-model = "predmet"> </td>
+                <td> <button type="button" class="btn btn-success" ng-click = "dodaj()">Dodaj</button> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

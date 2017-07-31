@@ -54,7 +54,7 @@ public class StudentController {
 	}
 
 	@RequestMapping(value = "/students", method = RequestMethod.GET)
-	public HashMap<Integer, Student> getStudenti() {
+	public Iterable<Student> getStudenti() {
 		return getStudentService().getStudents();
 	}
 	@RequestMapping(value = "/students/{id}", method = RequestMethod.DELETE)

@@ -2,12 +2,13 @@ package com.example.first.spring.project.dao;
 
 import java.util.*;
 
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
 import com.example.first.spring.project.entity.Student;
 @Component
-public class StudentDao {
-	private final HashMap<Integer, Student> students = new HashMap<Integer, Student>();
+public interface StudentDao extends CrudRepository<Student, Integer> {
+/*	private final HashMap<Integer, Student> students = new HashMap<Integer, Student>();
 	private int brojac;
 
 	public StudentDao() {
@@ -34,5 +35,5 @@ public class StudentDao {
 
 	public void update(Student student) {
 		students.put(student.getId(), student);
-	}
+	}*/
 }

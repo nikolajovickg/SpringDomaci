@@ -19,22 +19,22 @@ public class StudentService {
 		return studentDao;
 	}
 
-	public HashMap<Integer, Student> getStudents(){
-		return getStudentDao().getStudents();
+	public Iterable<Student> getStudents(){
+		return getStudentDao().findAll();
 	}
 	public Student get(int id) {
-		return getStudentDao().get(id);
+		return getStudentDao().findOne(id);
 	}
 
 	public void add(Student student) {
-		getStudentDao().add(student);
+		getStudentDao().save(student);
 	}
 
 	public void remove(int id) {
-		getStudentDao().remove(id);
+		getStudentDao().delete(id);
 	}
 
 	public void update(Student student) {
-		getStudentDao().update(student);
+		getStudentDao().save(student);
 	}
 }
